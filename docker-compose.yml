@@ -22,9 +22,9 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - postgres:/var/lib/postgresql
+      - postgres:/var/lib/postgresql/data
     env_file:
-        - variables.env
+      - variables.env
 
   phpmyadmin:
     restart: always

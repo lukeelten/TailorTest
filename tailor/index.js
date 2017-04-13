@@ -7,7 +7,7 @@ const http = require('http');
 const Tailor = require('node-tailor');
 
 const tailor = new Tailor({
-    templatesPath: __dirname + '/templates'
+    templatesPath: __dirname + '/templates/'
 });
 
 // Root Server

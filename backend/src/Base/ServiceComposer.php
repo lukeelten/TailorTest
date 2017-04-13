@@ -28,7 +28,7 @@ class ServiceComposer {
 
         // setup config
         $di->setShared("config", function() {
-            $config = new CachedConfiguration(__DIR__ . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . "config");
+            $config = new ConfigurationLoader(__DIR__ . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . "config");
             return $config->load();
         });
 
@@ -63,6 +63,12 @@ class ServiceComposer {
         return $this;
     }
 
+    protected function _initDefaultRoutes(Micro $app) {
+        $app->map("/", function() {
+            return new JsonResponse(["status" => true]);
+        });
+    }
+
 
     /**
      * @return void
@@ -84,6 +90,7 @@ class ServiceComposer {
                 return $di->get($key);
             });
         }
+        $this->_initDefaultRoutes($app);
 
         $service = $app->handle();
         if ($service instanceof ServiceInterface) {
