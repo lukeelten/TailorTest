@@ -6,6 +6,7 @@ namespace TailorTest\Base;
 use Phalcon\Di\FactoryDefault;
 use Phalcon\DiInterface;
 use Phalcon\Mvc\Micro;
+use TailorTest\Models\Users;
 
 /**
  * Class ServiceComposer
@@ -47,6 +48,8 @@ class ServiceComposer {
 
         $di->setShared("errorHandler", ErrorHandler::class);
         $di->setShared("notFoundHandler", NotFoundHandler::class);
+
+        Users::initTable($di->getShared("db"));
 
         return $di;
     }
