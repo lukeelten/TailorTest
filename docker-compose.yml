@@ -1,0 +1,89 @@
+version: '2'
+
+services:
+  mysql:
+    restart: always
+    image: mysql:latest
+    expose:
+      - "3306"
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./data/mysql:/docker-entrypoint-initdb.d
+      - mysql:/var/lib/mysql
+    env_file:
+        - variables.env
+
+  postgresql:
+    restart: always
+    image: postgres:alpine
+    expose:
+      - "5432"
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres:/var/lib/postgresql
+    env_file:
+        - variables.env
+
+  phpmyadmin:
+    restart: always
+    image: phpmyadmin/phpmyadmin:latest
+    depends_on:
+      - mysql
+    ports:
+      - "8080:80"
+    env_file:
+      - variables.env
+
+  phppgadmin:
+    restart: always
+    image: zhajor/docker-phppgadmin
+    depends_on:
+      - postgresql
+    ports:
+      - "8081:80"
+    env_file:
+      - variables.env
+
+  memcached:
+    restart: always
+    image: memcached:alpine
+    ports:
+      - "11211:11211"
+
+  node:
+    restart: always
+    image: node:alpine
+    ports:
+      - "3000:3000"
+    expose:
+      - "3000"
+    depends_on:
+      - app
+
+  app:
+    build: docker/app
+    restart: always
+    working_dir: /project
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./application:/project
+      - ./cache:/project/cache
+      - ./logs:/project/logs
+      - ./conf/php/cli.ini:/etc/php/7.0/cli/conf.d/100-custom.ini
+      - ./conf/php/fpm.ini:/etc/php/7.0/fpm/conf.d/100-custom.ini
+    depends_on:
+      - mysql
+      - postgresql
+      - memcached
+    env_file:
+      - variables.env
+
+volumes:
+  mysql:
+    driver: local
+  postgres:
+    driver: local
