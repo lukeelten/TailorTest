@@ -8,9 +8,9 @@ $headers->addStylesheet("css/footer.css")
     ->sendHeaders();
 ?>
 <footer class="container-fluid">
-    <div class="row">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <p>Wir sind so geil.</p>
+    <div class="panel panel-default">
+        <div class="panel-body">
+            This is the site footer
         </div>
     </div>
 </footer>
