@@ -1,0 +1,7 @@
+vendor
+cache
+logs
+!.gitkeep
+.idea
+
+config/local.php

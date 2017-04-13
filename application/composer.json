@@ -1,0 +1,24 @@
+{
+  "name": "lukeelten/tailortest",
+  "type": "project",
+  "require": {
+    "php": "^7.0"
+  },
+  "require-dev": {
+    "phalcon/devtools": "dev-master",
+    "phpunit/phpunit": ">=5.0"
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "TailorTest\\Test\\": "test/"
+    }
+  },
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Tobias Derksen",
+      "email": "t.derksen@gmx.de"
+    }
+  ],
+  "minimum-stability": "dev"
+}
