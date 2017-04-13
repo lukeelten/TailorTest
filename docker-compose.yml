@@ -55,28 +55,39 @@ services:
   node:
     restart: always
     image: node:alpine
+    volumes:
+        - "./tailor:/src/app"
     ports:
-      - "3000:3000"
-    expose:
-      - "3000"
+      - "80:3000"
     depends_on:
-      - app
+      - frontend
 
-  app:
+  frontend:
     build: docker/app
     restart: always
     working_dir: /project
     ports:
-      - "80:80"
-      - "443:443"
+      - "8100:80"
     volumes:
-      - ./application:/project
-      - ./cache:/project/cache
-      - ./logs:/project/logs
+      - ./frontend:/project
       - ./conf/php/cli.ini:/etc/php/7.0/cli/conf.d/100-custom.ini
       - ./conf/php/fpm.ini:/etc/php/7.0/fpm/conf.d/100-custom.ini
     depends_on:
-      - mysql
+      - backend
+    env_file:
+      - variables.env
+
+  backend:
+    build: docker/app
+    restart: always
+    working_dir: /project
+    ports:
+      - "8101:80"
+    volumes:
+      - ./application:/project
+      - ./conf/php/cli.ini:/etc/php/7.0/cli/conf.d/100-custom.ini
+      - ./conf/php/fpm.ini:/etc/php/7.0/fpm/conf.d/100-custom.ini
+    depends_on:
       - postgresql
       - memcached
     env_file:
