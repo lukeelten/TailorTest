@@ -1,0 +1,16 @@
+{
+    "name": "lukeelten/tailortest-frontend",
+    "type": "project",
+    "require": {
+        "nategood/httpful": "^0.2.20",
+        "php": "^7.0"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Tobias Derksen",
+            "email": "t.derksen@gmx.de"
+        }
+    ],
+    "minimum-stability": "dev"
+}
