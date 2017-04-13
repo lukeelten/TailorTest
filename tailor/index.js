@@ -11,11 +11,12 @@ const tailor = new Tailor({
 });
 
 // Root Server
-http.createServer((req, res) => {
+http.createServer(function (req, res) {
     if (req.url === '/favicon.ico') {
         res.writeHead(200, { 'Content-Type': 'image/x-icon' } );
         return res.end('');
     }
+
     tailor.requestHandler(req, res);
 }).listen(3000, function () {
     console.log('Tailor server listening on port 3000');
