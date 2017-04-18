@@ -28,12 +28,26 @@ services:
     image: node:alpine
     command: node .
     working_dir: /project
+    expose:
+      - "3000"
     ports:
-      - "80:3000"
+      - "3000:3000"
     depends_on:
       - frontend
     volumes:
       - ./tailor:/project
+
+  skipper:
+    restart: always
+    build: skipper
+    expose:
+      - "9090"
+    ports:
+      - "80:9090"
+    depends_on:
+      - tailor
+    volumes:
+      - ./skipper/routes:/routes
 
   frontend:
     build: docker/app

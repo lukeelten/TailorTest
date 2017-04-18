@@ -1,0 +1,2 @@
+index: Path("/index") -> "http://tailor:3000/index";
+test: Path("/test/*") -> "http://tailor:3000";

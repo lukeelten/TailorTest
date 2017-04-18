@@ -1,6 +1,4 @@
 <?php
-ob_start();
-
 require_once ("../vendor/autoload.php");
 
 $headers = new \TailorTest\Frontend\LinkHeader("http://localhost:8100/");

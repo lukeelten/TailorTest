@@ -3,7 +3,6 @@
 'use strict';
 
 const http = require('http');
-
 const Tailor = require('node-tailor');
 
 const tailor = new Tailor({
