@@ -34,6 +34,7 @@ services:
       - "3000:3000"
     depends_on:
       - frontend
+      - backend
     volumes:
       - ./tailor:/project
 
@@ -50,7 +51,7 @@ services:
       - ./skipper/routes:/routes
 
   frontend:
-    build: docker/app
+    build: frontend
     restart: always
     working_dir: /project
     expose:
@@ -61,13 +62,11 @@ services:
       - ./frontend:/project
       - ./conf/php/cli.ini:/etc/php/7.0/cli/conf.d/100-custom.ini
       - ./conf/php/fpm.ini:/etc/php/7.0/fpm/conf.d/100-custom.ini
-    depends_on:
-      - backend
     env_file:
       - variables.env
 
   backend:
-    build: docker/app
+    build: backend
     restart: always
     working_dir: /project
     expose:

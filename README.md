@@ -9,7 +9,6 @@ To start the project use docker-compose. All neede services will be created and 
 Nevertheless, you need to free the ports 80,8080,8100,8101,5432 in order to successfully run docker.
 ``` bash
 # Do the following on your own:
-# Install composer dependencies for backend
 # Install composer dependencies for frontend
 # Install npm dependencies for tailor
 
@@ -24,7 +23,7 @@ PhpPgAdmin is available via [localhost:8080](http://localhost:8080)  (Username a
 
 ## Infrastructure
 
-The infrstructure is inspired by Zanlado´s project mosaic [Website](https://www.mosaic9.org).
+The infrastructure is inspired by Zalando´s project mosaic [Website](https://www.mosaic9.org).
 
 ### Skipper
 HTTP Router developed by Zalando. See [github.com/zalando/skipper](https://github.com/zalando/skipper)
