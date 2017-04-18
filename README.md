@@ -24,6 +24,11 @@ PhpPgAdmin is available via [localhost:8080](http://localhost:8080)  (Username a
 
 ## Infrastructure
 
+The infrstructure is inspired by Zanlado´s project mosaic [Website](https://www.mosaic9.org).
+
+### Skipper
+HTTP Router developed by Zalando. See [github.com/zalando/skipper](https://github.com/zalando/skipper)
+
 ### Tailor
 Tailor composes the delivered page out of multiple fragment. The template can be found in "tailor/templates".
 
