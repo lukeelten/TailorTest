@@ -30,8 +30,6 @@ services:
     working_dir: /project
     expose:
       - "3000"
-    ports:
-      - "3000:3000"
     depends_on:
       - frontend
       - backend

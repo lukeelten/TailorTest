@@ -5,7 +5,7 @@ This test application uses code from [Zalando/Tailor](https://github.com/zalando
 Skeleton used from [phalcon-compose](https://github.com/phalcon/phalcon-compose)
 
 ## Start Project
-To start the project use docker-compose. All neede services will be created and started automatically, there is no need for a service running on localhost. <br />
+To start the project use docker-compose. <br />
 Nevertheless, you need to free the ports 80,8080,8100,8101,5432 in order to successfully run docker.
 ``` bash
 # Do the following on your own:
@@ -17,8 +17,8 @@ docker-compose up -d
 ```
 
 You can see the result on [localhost](http://localhost/index) <br /><br />
-Frontend is available via [localhost:8100](http://localhost:8100) <br />
-Backend is available via [localhost:8101](http://localhost:8101) <br />
+Frontend is directly available via [localhost:8100](http://localhost:8100) <br />
+Backend REST is available via [localhost:8101](http://localhost:8101) <br />
 PhpPgAdmin is available via [localhost:8080](http://localhost:8080)  (Username and Password can be seen in variables.env)
 
 ## Infrastructure
