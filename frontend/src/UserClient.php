@@ -6,7 +6,7 @@ use Httpful\Request;
 
 class UserClient {
 
-    protected $baseUrl = "Http://backend/user";
+    protected $baseUrl = "http://backend/user";
 
     public function getAll() : array {
 

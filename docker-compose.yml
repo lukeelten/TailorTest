@@ -7,7 +7,7 @@ services:
     expose:
       - "5432"
     ports:
-      - "5432:5432"
+      - "8106:5432"
     volumes:
       - postgres:/var/lib/postgresql/data
     env_file:
@@ -19,7 +19,7 @@ services:
     depends_on:
       - postgresql
     ports:
-      - "8080:80"
+      - "8105:80"
     env_file:
       - variables.env
 
@@ -42,7 +42,7 @@ services:
     expose:
       - "9090"
     ports:
-      - "80:9090"
+      - "8100:9090"
     depends_on:
       - tailor
     volumes:
@@ -55,7 +55,7 @@ services:
     expose:
       - "80"
     ports:
-      - "8100:80"
+      - "8101:80"
     volumes:
       - ./frontend:/project
       - ./conf/php/cli.ini:/etc/php/7.0/cli/conf.d/100-custom.ini
@@ -70,7 +70,7 @@ services:
     expose:
       - "80"
     ports:
-      - "8101:80"
+      - "8102:80"
     volumes:
       - ./backend:/project
       - ./conf/php/cli.ini:/etc/php/7.0/cli/conf.d/100-custom.ini
